@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+
+    <com.melih.strokedtextview.StrokedTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text1"
+            android:layout_marginTop="16dp"
+            app:strokeColor="@color/colorPrimaryDark"
+            app:strokeThickness="3dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="16sp"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+            android:id="@+id/strokedTextView"/>
+
+    <com.melih.strokedtextview.StrokedTextView
+            android:id="@+id/strokedTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text2"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@+id/strokedTextView"
+            app:layout_constraintStart_toStartOf="@+id/strokedTextView"/>
+
+    <com.melih.strokedtextview.StrokedTextView
+            android:id="@+id/strokedTextView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text4"
+            android:textStyle="italic"
+            android:layout_marginTop="8dp"
+            android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@+id/strokedTextView4"
+            app:layout_constraintStart_toStartOf="@+id/strokedTextView"/>
+
+    <com.melih.strokedtextview.StrokedTextView
+            android:id="@+id/strokedTextView4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/text3"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:textSize="24sp"
+            android:paddingStart="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/strokedTextView"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/strokedTextView2"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

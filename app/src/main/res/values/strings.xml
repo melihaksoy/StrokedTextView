@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">StrokedTextView</string>
+
+    <string name="text1">WOW a stroked text</string>
+    <string name="text2">WOOOW a larger stroked text !</string>
+    <string name="text3">Multi-line text, this is a long text that describes something long Morty. Read it Morty. Read it.</string>
+    <string name="text4">Italic to double confirm it supports styles.</string>
+</resources>
