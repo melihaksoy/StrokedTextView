@@ -9,6 +9,7 @@ import android.text.Layout
 import android.text.StaticLayout
 import android.text.TextPaint
 import android.util.AttributeSet
+import android.util.Log
 import androidx.appcompat.widget.AppCompatTextView
 
 class StrokedTextView : AppCompatTextView {
@@ -35,24 +36,7 @@ class StrokedTextView : AppCompatTextView {
     /**
      * Static layout values are not mutable so we need to initialize it after text is set
      */
-    private val staticLayout: StaticLayout by lazy {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            StaticLayout.Builder
-                .obtain(text, 0, text.length, staticLayoutPaint, calcWidth)
-                .setLineSpacing(lineSpacingExtra, lineSpacingMultiplier)
-                .build()
-        } else {
-            StaticLayout(
-                text,
-                staticLayoutPaint,
-                calcWidth,
-                Layout.Alignment.ALIGN_NORMAL,
-                lineSpacingMultiplier,
-                lineSpacingExtra,
-                true
-            )
-        }
-    }
+    private lateinit var staticLayout: StaticLayout
 
     private val staticLayoutPaint by lazy {
         TextPaint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -82,6 +66,7 @@ class StrokedTextView : AppCompatTextView {
     override fun onDraw(canvas: Canvas?) {
         if (canvas == null) return
 
+        reinitialzieStaticLayout()
         with(canvas) {
             save()
             translate(paddingStart.toFloat(), 0f)
@@ -95,6 +80,25 @@ class StrokedTextView : AppCompatTextView {
             staticLayout.draw(this)
 
             restore()
+        }
+    }
+
+    private fun reinitialzieStaticLayout() {
+        staticLayout = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            StaticLayout.Builder
+                .obtain(text, 0, text.length, staticLayoutPaint, calcWidth)
+                .setLineSpacing(lineSpacingExtra, lineSpacingMultiplier)
+                .build()
+        } else {
+            StaticLayout(
+                text,
+                staticLayoutPaint,
+                calcWidth,
+                Layout.Alignment.ALIGN_NORMAL,
+                lineSpacingMultiplier,
+                lineSpacingExtra,
+                true
+            )
         }
     }
 
